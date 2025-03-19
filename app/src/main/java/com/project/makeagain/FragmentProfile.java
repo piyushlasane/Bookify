@@ -95,10 +95,6 @@ public class FragmentProfile extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
         List<ModelBook> books = new ArrayList<>();
-//        books.add(new ModelBook("Mahabharata", 100, R.drawable.book_mahabharata));
-//        books.add(new ModelBook("Data Structures and Algorithms", 50, R.drawable.book_dsa));
-//        books.add(new ModelBook("Rich Dad Poor Dad", 75, R.drawable.book_reachdadpoordad));
-        // Add more books as needed...
 
         BookAdapterProfile adapter = new BookAdapterProfile(books);
         recyclerView.setAdapter(adapter);

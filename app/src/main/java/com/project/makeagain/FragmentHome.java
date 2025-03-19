@@ -92,15 +92,6 @@ public class FragmentHome extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-//    private void loadBooks() {
-//        bookList.clear();  // 🛑 Clears previous data before adding new ones
-//        // Fetch books dynamically here (API call can be added later)
-//        bookList.add(new ModelBook("Mahabharata", "Ved Vyasa", R.drawable.book_mahabharata));
-//        bookList.add(new ModelBook("Data Structures and Algorithms", "Michael T. Goodrich", R.drawable.book_dsa));
-//        bookList.add(new ModelBook("Rich Dad Poor Dad", "Robert Kiyosaki", R.drawable.book_reachdadpoordad));
-//        // Add more books dynamically...
-//    }
-
     private void fetchBooks(String searchTerm) {
         RetrofitInstance.getInstance().apiResponse.getBooks(searchTerm, BuildConfig.API_KEY)
                 .enqueue(new Callback<>() {
