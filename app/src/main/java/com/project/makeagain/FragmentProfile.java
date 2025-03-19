@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,16 +116,9 @@ public class FragmentProfile extends Fragment {
             entries.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
 
-        // Define custom grey shades
-        ArrayList<Integer> greyShades = new ArrayList<>();
-        greyShades.add(Color.parseColor("#D3D3D3")); // Light Grey
-        greyShades.add(Color.parseColor("#A9A9A9")); // Dark Grey
-        greyShades.add(Color.parseColor("#808080")); // Grey
-        greyShades.add(Color.parseColor("#696969")); // Dim Grey
-
         // Setting up PieDataSet
         PieDataSet dataSet = new PieDataSet(entries, "ModelBook Categories");
-        dataSet.setColors(greyShades); // Add more colors as needed
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS); // Add more colors as needed
         dataSet.setValueTextColor(Color.BLACK);
         dataSet.setValueTextSize(12f);
         dataSet.setValueFormatter(new ValueFormatter() {
@@ -173,10 +167,17 @@ public class FragmentProfile extends Fragment {
     private void setupEditButton() {
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                sharedViewModel.setName(result.getData().getStringExtra("name"));
-                sharedViewModel.setUsername(result.getData().getStringExtra("username"));
-                sharedViewModel.setGender(result.getData().getStringExtra("gender"));
+                if (result.getData().hasExtra("name")) {
+                    sharedViewModel.setName(result.getData().getStringExtra("name"));
+                }
+                if (result.getData().hasExtra("username")) {
+                    sharedViewModel.setUsername(result.getData().getStringExtra("username"));
+                }
+                if (result.getData().hasExtra("gender")) {
+                    sharedViewModel.setGender(result.getData().getStringExtra("gender"));
+                }
             }
+
         });
 
         editButton.setOnClickListener(v -> {

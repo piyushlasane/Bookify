@@ -3,6 +3,7 @@ package com.project.makeagain;
 import com.google.gson.annotations.SerializedName;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class ModelBook {
 
@@ -28,7 +29,7 @@ public class ModelBook {
         }
 
         public List<String> getAuthors() {
-            return authors != null ? authors : Collections.emptyList();
+            return Optional.ofNullable(authors).orElse(Collections.emptyList());
         }
 
         public ImageLinks getImageLinks() {

@@ -51,7 +51,7 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
 
             // Set Author
             if (volumeInfo.getAuthors() != null && !volumeInfo.getAuthors().isEmpty()) {
-                holder.bookAuthor.setText(TextUtils.join(", ", volumeInfo.getAuthors()));
+                holder.bookAuthor.setText(String.join(", ", volumeInfo.getAuthors()));
             } else {
                 holder.bookAuthor.setText(R.string.unknown_author);
             }

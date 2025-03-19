@@ -18,6 +18,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PageEditProfile extends AppCompatActivity {
@@ -114,9 +116,9 @@ public class PageEditProfile extends AppCompatActivity {
     public void prefill() {
         // Get data from the Intent
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name") != null ? intent.getStringExtra("name") : "";
-        String username = intent.getStringExtra("username") != null ? intent.getStringExtra("username") : "";
-        String gender = intent.getStringExtra("gender") != null ? intent.getStringExtra("gender") : "";
+        String name = Objects.requireNonNullElse(intent.getStringExtra("name"), "");
+        String username = Objects.requireNonNullElse(intent.getStringExtra("username"), "");
+        String gender = Objects.requireNonNullElse(intent.getStringExtra("gender"), "");
 
         editName.setText(name);
         editUsername.setText(username);

@@ -2,6 +2,7 @@ package com.project.makeagain;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Collections;
 import java.util.List;
 
 public class BookResponse {
@@ -9,6 +10,7 @@ public class BookResponse {
     private List<ModelBook> items;
 
     public List<ModelBook> getItems() {
-        return items;
+        return items != null ? items : Collections.emptyList();
     }
+
 }
