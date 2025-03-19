@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
+    <color name="page_background">#121116</color>
+    <color name="darkgrey">#ECECEC</color>
+    <color name="submit_cirle_grey">#DCDCDC</color>
+    <color name="lightgray">#2B2932</color>
+</resources>

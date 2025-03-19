@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginEnd="10dp"
+    android:paddingVertical="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookCard"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="140dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/bookImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/book_image"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/book_mahabharata" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/bookTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:minWidth="100dp"
+        android:maxWidth="250dp"
+        android:text="@string/book_title"
+        android:fontFamily="@font/crimsontext_bold"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="12dp"/>
+
+    <TextView
+        android:id="@+id/bookAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:minWidth="100dp"
+        android:maxWidth="250dp"
+        android:text="@string/book_author"
+        android:fontFamily="@font/crimsontext_bold"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:layout_marginStart="12dp" />
+
+</LinearLayout>

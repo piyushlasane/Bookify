@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="210dp"
+    android:orientation="vertical"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/shape_book_card"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="10dp">
+
+    <ImageView
+        android:id="@+id/bookImage"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:contentDescription="@string/book_image"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/book_mahabharata" />
+
+    <TextView
+        android:id="@+id/bookTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:minWidth="80dp"
+        android:maxWidth="120dp"
+        android:text="@string/book_title"
+        android:fontFamily="@font/crimsontext_bold"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"/>
+
+    <ProgressBar
+        android:id="@+id/bookProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="1dp"
+        android:progress="65"
+        android:layout_gravity="center"
+        android:max="100"
+        android:progressDrawable="@drawable/shape_custom_progress"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"/>
+
+    <TextView
+        android:id="@+id/bookProgress"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/crimsontext_semibold"
+        android:text=""
+        android:textSize="12sp"
+        android:layout_marginStart="8dp"/>
+</LinearLayout>

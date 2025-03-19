@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="page_background">#EEEFF2</color>
+    <color name="darkgrey">#2B3549</color>
+    <color name="gray">#A4A5A8</color>
+    <color name="lightgray">#E2E3E6</color>
+    <color name="submit_cirle_grey">#3D4653</color>
+    <color name="book_card_grey">#475060</color>
+    <color name="navbar_color">#060606</color>
+</resources>

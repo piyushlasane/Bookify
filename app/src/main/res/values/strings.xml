@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Bookify</string>
+    <string name="recently_view">Recently View</string>
+    <string name="category_of_books">View category of books</string>
+    <string name="submit_button">Submit</string>
+    <string name="get_started">Get Started</string>
+    <string name="logo_of_app">logo of app</string>
+    <string name="lets_begin">Lets, Begin</string>
+    <string name="enter_the_name">Enter the name</string>
+    <string name="user_image">user image</string>
+    <string name="drop_down_arrow">drop down arrow</string>
+    <string name="book_image">Book Image</string>
+    <string name="book_title">Book Title</string>
+    <string name="book_author">Book Author</string>
+    <string name="welcome">Welcome,</string>
+    <string name="search_books">Search &quot;Books&quot;</string>
+    <string name="notification_bell">Notification bell</string>
+    <string name="search_icon">Search icon</string>
+    <string name="mic_icon">Mic icon</string>
+    <string name="explore">Explore</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="profile">Profile</string>
+    <string name="bestseller">Bestseller</string>
+    <string name="default_name">Book Reader</string>
+    <string name="default_username">book_reader</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit">Edit</string>
+    <string name="change_username">Change Username</string>
+    <string name="change_name">Change Name</string>
+    <string name="reader">Reader</string>
+    <string name="no_title_available">No Title Available</string>
+    <string name="unknown_author">Unknown Author</string>
+</resources>

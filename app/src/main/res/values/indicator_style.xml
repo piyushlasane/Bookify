@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/lightgray</item> <!-- Change indicator color -->
+        <item name="android:width">64dp</item>
+    </style>
+
+    <style name="App.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">?attr/colorOnPrimary</item> <!-- Keep default icon color -->
+        <item name="itemTextColor">?attr/colorOnPrimary</item> <!-- Keep default text color -->
+        <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item> <!-- Apply custom indicator -->
+    </style>
+
+</resources>

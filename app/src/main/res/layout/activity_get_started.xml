@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background"
+    tools:context=".PageGetStarted">
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/logo_of_app"
+        android:src="@drawable/icon_logo" />
+
+    <TextView
+        android:id="@+id/getStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/shape_get_started"
+        android:clickable="true"
+        android:contentDescription="@string/get_started"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:fontFamily="@font/poppins_bold"
+        android:hapticFeedbackEnabled="true"
+        android:paddingHorizontal="90dp"
+        android:paddingVertical="16dp"
+        android:text="@string/get_started"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="ClickableViewAccessibility" />
+
+</RelativeLayout>

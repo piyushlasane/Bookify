@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background"
+    tools:context=".PageGetData">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="25dp"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="@string/lets_begin"
+            android:textColor="@color/darkgrey"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/enterNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_edittext"
+            android:orientation="horizontal"
+            android:padding="5sp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/user_image"
+                android:src="@drawable/icon_user" />
+
+            <EditText
+                android:id="@+id/enterName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_blank"
+                android:hint="@string/enter_the_name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="20sp"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selectGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_edittext"
+            android:orientation="horizontal"
+            android:padding="5sp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/user_image"
+                android:src="@drawable/icon_user" />
+
+            <Spinner
+                android:id="@+id/spinnerGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_blank"
+                android:minHeight="48dp"
+                android:popupBackground="@drawable/shape_edittext"
+                android:popupElevation="4dp"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_margin="10sp"
+                android:contentDescription="@string/drop_down_arrow"
+                android:src="@drawable/icon_downarrow" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/submit"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/selector_button_hover_effect"
+            android:backgroundTint="@color/darkgrey"
+            android:clickable="true"
+            android:focusable="true"
+            android:hapticFeedbackEnabled="true">
+
+            <!-- Arrow Icon -->
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:layout_margin="40dp"
+                android:background="@drawable/shape_circle"
+                android:contentDescription="@string/submit_button"
+                android:padding="15dp"
+                android:src="@drawable/icon_rightarrow" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
