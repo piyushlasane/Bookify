@@ -31,4 +31,7 @@
     <string name="reader">Reader</string>
     <string name="no_title_available">No Title Available</string>
     <string name="unknown_author">Unknown Author</string>
+    <string name="my_wishlist_is_empty">My Wishlist is Empty!</string>
+    <string name="empty_wishlist_image">Empty Wishlist Image</string>
+    <string name="find_something">Find something you love and save it here.</string>
 </resources>

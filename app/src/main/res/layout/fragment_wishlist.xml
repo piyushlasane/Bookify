@@ -6,6 +6,64 @@
     android:background="@color/page_background"
     tools:context=".FragmentWishlist">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/wishlist"/>
 
+    <LinearLayout
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+
+        <ImageView
+            android:id="@+id/empty_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/icon_read_book"
+            android:contentDescription="@string/empty_wishlist_image"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/empty_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_wishlist_is_empty"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/empty_subtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/find_something"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/exploreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_square"
+            android:contentDescription="@string/explore"
+            android:elevation="4dp"
+            android:hapticFeedbackEnabled="true"
+            android:paddingHorizontal="80dp"
+            android:paddingVertical="8dp"
+            android:text="@string/explore"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+    </LinearLayout>
 
 </RelativeLayout>

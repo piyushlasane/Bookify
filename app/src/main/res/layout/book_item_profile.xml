@@ -14,7 +14,8 @@
         android:layout_width="100dp"
         android:layout_height="140dp"
         android:contentDescription="@string/book_image"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:layout_gravity="center"
         android:src="@drawable/book_mahabharata" />
 
