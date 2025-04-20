@@ -2,6 +2,7 @@ package com.project.makeagain;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -54,5 +55,28 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(MainActivity.this, R.id.fragment_container);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
+        handleKeyboardVisibility();
+
     }
+
+    private void handleKeyboardVisibility() {
+        final View rootView = findViewById(android.R.id.content);
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            int heightDiff = rootView.getRootView().getHeight() - rootView.getHeight();
+            boolean isKeyboardShown = heightDiff > dpToPx(); // 200dp is a threshold
+
+            BottomNavigationView nav = findViewById(R.id.navigation_panel);
+            if (isKeyboardShown) {
+                nav.setVisibility(View.GONE);
+            } else {
+                nav.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private int dpToPx() {
+        return (int) (200 * getResources().getDisplayMetrics().density);
+    }
+
+
 }
