@@ -1,7 +1,8 @@
 package com.project.makeagain;
 
 import android.content.Context;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
 
 import java.util.List;
 
 public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHolder> {
 
     private final Context context;
-    private final List<ModelBook> allUsersList;
+    private final List<ModelBook> bookList;
     private final LayoutInflater inflater;
 
-    public BookAdapterHome(Context context, List<ModelBook> allUsersList) {
+    public BookAdapterHome(Context context, List<ModelBook> bookList) {
         this.context = context;
-        this.allUsersList = allUsersList;
+        this.bookList = bookList;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -38,7 +40,7 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
 
     @Override
     public void onBindViewHolder(@NonNull BookHolder holder, int position) {
-        ModelBook book = allUsersList.get(position);
+        ModelBook book = bookList.get(position);
         ModelBook.VolumeInfo volumeInfo = book.getVolumeInfo();
 
         if (volumeInfo != null) {
@@ -74,13 +76,30 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
             } else {
                 holder.bookImage.setImageResource(R.drawable.no_image);
             }
+
+            // Handle click to open webReaderLink
+            holder.itemView.setOnClickListener(v -> {
+                if (book.getAccessInfo() != null &&
+                        book.getAccessInfo().getWebReaderLink() != null &&
+                        !book.getAccessInfo().getWebReaderLink().isEmpty()) {
+
+                    Gson gson = new Gson();
+                    String bookJson = gson.toJson(book); // Serialize book
+
+                    RecentlyViewedManager.addBook(context, bookJson); // Save to SharedPreferences
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(book.getAccessInfo().getWebReaderLink()));
+                    context.startActivity(intent);
+                }
+            });
+
         }
     }
 
 
     @Override
     public int getItemCount() {
-        return allUsersList.size();
+        return bookList.size();
     }
 
     static class BookHolder extends RecyclerView.ViewHolder {

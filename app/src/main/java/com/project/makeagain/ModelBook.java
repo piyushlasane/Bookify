@@ -10,8 +10,15 @@ public class ModelBook {
     @SerializedName("volumeInfo")
     private VolumeInfo volumeInfo;
 
+    @SerializedName("accessInfo")
+    private AccessInfo accessInfo;
+
     public VolumeInfo getVolumeInfo() {
         return volumeInfo;
+    }
+
+    public AccessInfo getAccessInfo() {
+        return accessInfo;
     }
 
     public static class VolumeInfo {
@@ -48,4 +55,15 @@ public class ModelBook {
             return (thumbnail != null) ? thumbnail : smallThumbnail; // Return best available image
         }
     }
+
+    public static class AccessInfo {
+        @SerializedName("webReaderLink")
+        private String webReaderLink;
+
+        public String getWebReaderLink() {
+            return webReaderLink;
+        }
+    }
+
+
 }
