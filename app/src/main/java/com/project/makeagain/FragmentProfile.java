@@ -27,8 +27,12 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -77,6 +81,25 @@ public class FragmentProfile extends Fragment {
         editButton = view.findViewById(R.id.editButton);
     }
 
+    private void setupRecyclerView(View view) {
+        RecyclerView recyclerView = view.findViewById(R.id.recentlyViewRecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        JSONArray jsonArray = RecentlyViewedManager.getBooks(requireContext());
+        List<ModelBook> books = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String json = jsonArray.optString(i);
+            ModelBook book = new Gson().fromJson(json, ModelBook.class);
+            books.add(book);
+        }
+
+        Collections.reverse(books);
+
+        BookAdapterProfile adapter = new BookAdapterProfile(getContext(), books);
+        recyclerView.setAdapter(adapter);
+    }
+
     private void setupViewModel() {
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
@@ -89,17 +112,6 @@ public class FragmentProfile extends Fragment {
         sharedViewModel.getGender().observe(getViewLifecycleOwner(), gender -> profileImage.setImageResource(
                 gender != null && gender.equalsIgnoreCase("female") ?
                         R.drawable.icon_female_profile : R.drawable.icon_male_profile));
-    }
-
-    private void setupRecyclerView(View view) {
-        RecyclerView recyclerView = view.findViewById(R.id.recentlyViewRecycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-
-        List<ModelBook> books = new ArrayList<>();
-
-        BookAdapterProfile adapter = new BookAdapterProfile(books);
-        recyclerView.setAdapter(adapter);
-
     }
 
     private void setupPieChart() {
