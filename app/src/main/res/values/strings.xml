@@ -34,4 +34,8 @@
     <string name="my_wishlist_is_empty">My Wishlist is Empty!</string>
     <string name="empty_wishlist_image">Empty Wishlist Image</string>
     <string name="find_something">Find something you love and save it here.</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="loading">Loading…</string>
+    <string name="no_results_found">No results found</string>
+    <string name="failed_to_load">Failed to load data</string>
 </resources>

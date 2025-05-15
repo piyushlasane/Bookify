@@ -38,6 +38,7 @@ public class FragmentHome extends Fragment {
     private RecyclerView recyclerView;
     private BookAdapterHome adapter;
     private List<ModelBook> bookList;
+    private TextView statusMessage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class FragmentHome extends Fragment {
         searchTerm = view.findViewById(R.id.searchTerm);
         recyclerView = view.findViewById(R.id.recyclerViewHome);
         bookList = new ArrayList<>();
+        statusMessage = view.findViewById(R.id.statusMessage);
 
         // Observe name from SharedViewModel
         SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
@@ -85,14 +87,32 @@ public class FragmentHome extends Fragment {
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // 2 columns
 
+        if (Utils.isNetworkAvailable(requireContext())) {
+            statusMessage.setVisibility(View.GONE);
             fetchBooks("Chava"); // Call API when Enter or ✔️ is pressed
-            hideKeyboard(); // Hide keyboard
+            hideKeyboard();
+        } else {
+            statusMessage.setText(R.string.no_internet_connection);
+            statusMessage.setVisibility(View.VISIBLE);
+        }
 
         adapter = new BookAdapterHome(getContext(), bookList);
         recyclerView.setAdapter(adapter);
     }
 
     private void fetchBooks(String searchTerm) {
+
+        if (!Utils.isNetworkAvailable(requireContext())) {
+            statusMessage.setText(R.string.no_internet_connection);
+            statusMessage.setVisibility(View.VISIBLE);
+            bookList.clear();
+            adapter.notifyDataSetChanged();
+            return;
+        }
+
+        statusMessage.setText(R.string.loading);
+        statusMessage.setVisibility(View.VISIBLE);
+
         RetrofitInstance.getInstance().apiResponse.getBooks(searchTerm, BuildConfig.API_KEY)
                 .enqueue(new Callback<>() {
                     @SuppressLint("NotifyDataSetChanged")
@@ -103,15 +123,24 @@ public class FragmentHome extends Fragment {
                             bookList.clear();
                             bookList.addAll(response.body().getItems());
                             adapter.notifyDataSetChanged();
+
+                            if (bookList.isEmpty()) {
+                                statusMessage.setText(R.string.no_results_found);
+                                statusMessage.setVisibility(View.VISIBLE);
+                            } else {
+                                statusMessage.setVisibility(View.GONE);
+                            }
                         } else {
-                            Toast.makeText(getActivity(), "No data found", Toast.LENGTH_SHORT).show();
+                            statusMessage.setText(R.string.no_results_found);
+                            statusMessage.setVisibility(View.VISIBLE);
                         }
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<BookResponse> call, @NonNull Throwable t) {
                         Log.e("API_ERROR", "Failed to fetch data", t);
-                        Toast.makeText(getContext(), "Failed to load data", Toast.LENGTH_SHORT).show();
+                        statusMessage.setText(R.string.failed_to_load);
+                        statusMessage.setVisibility(View.VISIBLE);
                     }
                 });
     }

@@ -99,4 +99,16 @@
         android:overScrollMode="never"
         android:paddingHorizontal="8dp" />
 
+    <TextView
+        android:id="@+id/statusMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingTop="90dp"
+        android:text="@string/loading"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_medium"/>
+
+
 </RelativeLayout>
