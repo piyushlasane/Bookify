@@ -62,6 +62,7 @@ dependencies {
     implementation (libs.navigation.ui.ktx)
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
+    implementation (libs.shimmer)
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
 }

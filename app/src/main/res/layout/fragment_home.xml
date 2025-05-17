@@ -65,6 +65,7 @@
             android:background="@drawable/shape_blank"
             android:hint="@string/search_books"
             android:inputType="text"
+            android:imeOptions="actionSearch"
             android:minHeight="48dp" />
 
         <!-- Vertical Divider -->
@@ -77,6 +78,7 @@
 
 
         <ImageView
+            android:id="@+id/micBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:contentDescription="@string/mic_icon"
@@ -92,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_bar"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="15dp"
         android:clipToPadding="false"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
@@ -108,7 +111,7 @@
         android:text="@string/loading"
         android:textColor="@color/gray"
         android:textSize="16sp"
-        android:fontFamily="@font/poppins_medium"/>
-
+        android:fontFamily="@font/poppins_medium"
+        android:visibility="gone"/>
 
 </RelativeLayout>

@@ -28,6 +28,7 @@
     <string name="edit">Edit</string>
     <string name="change_username">Change Username</string>
     <string name="change_name">Change Name</string>
+    <string name="chava">chava</string>
     <string name="reader">Reader</string>
     <string name="no_title_available">No Title Available</string>
     <string name="unknown_author">Unknown Author</string>
@@ -38,4 +39,5 @@
     <string name="loading">Loading…</string>
     <string name="no_results_found">No results found</string>
     <string name="failed_to_load">Failed to load data</string>
+    <string name="read_more">Read More</string>
 </resources>

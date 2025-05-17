@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_marginEnd="10dp"
+    android:orientation="vertical"
     android:paddingVertical="10dp">
 
-    <androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/bookCard"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="140dp"
         android:layout_height="200dp"
+        android:layout_margin="8dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="0dp"
-        android:layout_margin="8dp">
+        app:cardElevation="4dp">
 
-        <ImageView
-            android:id="@+id/bookImage"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/book_image"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:src="@drawable/book_mahabharata" />
+            android:layout_height="match_parent">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shape_blank" />
+
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <ImageView
+                android:id="@+id/bookImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/book_image"
+                android:scaleType="fitXY"
+                android:src="@drawable/book_mahabharata" />
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -31,28 +56,28 @@
         android:id="@+id/bookTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLines="1"
+        android:layout_marginStart="12dp"
         android:ellipsize="end"
-        android:minWidth="100dp"
-        android:maxWidth="250dp"
-        android:text="@string/book_title"
         android:fontFamily="@font/crimsontext_bold"
+        android:maxWidth="250dp"
+        android:maxLines="1"
+        android:minWidth="100dp"
+        android:text="@string/book_title"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="12dp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/bookAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLines="1"
+        android:layout_marginStart="12dp"
         android:ellipsize="end"
-        android:minWidth="100dp"
-        android:maxWidth="250dp"
-        android:text="@string/book_author"
         android:fontFamily="@font/crimsontext_bold"
+        android:maxWidth="250dp"
+        android:maxLines="1"
+        android:minWidth="100dp"
+        android:text="@string/book_author"
         android:textColor="@color/black"
-        android:textSize="13sp"
-        android:layout_marginStart="12dp" />
+        android:textSize="13sp" />
 
 </LinearLayout>

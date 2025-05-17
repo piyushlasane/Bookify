@@ -1,8 +1,11 @@
 package com.project.makeagain;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +14,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -24,6 +35,34 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
     private final Context context;
     private final List<ModelBook> bookList;
     private final LayoutInflater inflater;
+    private boolean showShimmer = true; // initially true
+    private static final int SHIMMER_ITEM_COUNT = 6;
+    private static final int VIEW_TYPE_SHIMMER = 0;
+    private static final int VIEW_TYPE_BOOK = 1;
+
+    @Override
+    public int getItemCount() {
+        return showShimmer ? SHIMMER_ITEM_COUNT : bookList.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return showShimmer ? VIEW_TYPE_SHIMMER : VIEW_TYPE_BOOK;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void startShimmer() {
+        showShimmer = true;
+        notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void stopShimmer() {
+        if (showShimmer) {
+            showShimmer = false;
+            notifyDataSetChanged();
+        }
+    }
 
     public BookAdapterHome(Context context, List<ModelBook> bookList) {
         this.context = context;
@@ -34,12 +73,25 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
     @NonNull
     @Override
     public BookHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.book_item_home, parent, false);
+        View view;
+        if (viewType == VIEW_TYPE_SHIMMER) {
+            view = inflater.inflate(R.layout.item_shimmer_book, parent, false);
+        } else {
+            view = inflater.inflate(R.layout.book_item_home, parent, false);
+        }
         return new BookHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull BookHolder holder, int position) {
+
+        if (showShimmer) {
+            ShimmerFrameLayout shimmerLayout = (ShimmerFrameLayout) holder.itemView;
+            shimmerLayout.startShimmer();
+            return;
+        }
+
         ModelBook book = bookList.get(position);
         ModelBook.VolumeInfo volumeInfo = book.getVolumeInfo();
 
@@ -59,18 +111,37 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
             }
 
             // Load Image using Glide
-            if (volumeInfo.getImageLinks() != null && volumeInfo.getImageLinks().getThumbnail() != null) {
-                String imageUrl = volumeInfo.getImageLinks().getThumbnail();
-                if (imageUrl != null && imageUrl.startsWith("http://")) {
-                    imageUrl = imageUrl.replace("http://", "https://");
+            String mainImageUrl = volumeInfo.getImageLinks() != null ? volumeInfo.getImageLinks().getThumbnail() : null;
+            if (!TextUtils.isEmpty(mainImageUrl)) {
+                if (mainImageUrl.startsWith("http://")) {
+                    mainImageUrl = mainImageUrl.replace("http://", "https://");
                 }
+                holder.bookImage.setVisibility(View.INVISIBLE);
+                holder.shimmerImageLayout.startShimmer();
+                holder.shimmerImageLayout.setVisibility(View.VISIBLE);
 
-                Log.d("GlideDebug", "Loading image URL: " + imageUrl);
                 Glide.with(context)
-                        .load(imageUrl)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL) // Ensures caching
-                        .placeholder(R.drawable.book_loading)  // Temporary image while loading
-                        .error(R.drawable.no_image)  // If failed, show default image
+                        .load(mainImageUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.book_loading) // optional fallback
+                        .error(R.drawable.no_image)
+                        .listener(new RequestListener<Drawable>() {
+                            @Override
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                holder.bookImage.setVisibility(View.VISIBLE);
+                                holder.shimmerImageLayout.stopShimmer();
+                                holder.shimmerImageLayout.setVisibility(View.GONE);
+                                return false; // let Glide handle error placeholder
+                            }
+
+                            @Override
+                            public boolean onResourceReady(@NonNull Drawable resource, @NonNull Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                holder.bookImage.setVisibility(View.VISIBLE);
+                                holder.shimmerImageLayout.stopShimmer();
+                                holder.shimmerImageLayout.setVisibility(View.GONE);
+                                return false; // let Glide set the image
+                            }
+                        })
                         .into(holder.bookImage);
 
             } else {
@@ -79,38 +150,65 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
 
             // Handle click to open webReaderLink
             holder.itemView.setOnClickListener(v -> {
-                if (book.getAccessInfo() != null &&
-                        book.getAccessInfo().getWebReaderLink() != null &&
-                        !book.getAccessInfo().getWebReaderLink().isEmpty()) {
 
-                    Gson gson = new Gson();
-                    String bookJson = gson.toJson(book); // Serialize book
+                @SuppressLint("InflateParams") View sheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_book_preview, null);
+                BottomSheetDialog dialog = new BottomSheetDialog(context);
+                dialog.setContentView(sheetView);
 
-                    RecentlyViewedManager.addBook(context, bookJson); // Save to SharedPreferences
+                ImageView previewImage = sheetView.findViewById(R.id.previewImage);
+                TextView previewTitle = sheetView.findViewById(R.id.previewTitle);
+                TextView previewAuthor = sheetView.findViewById(R.id.previewAuthor);
+                TextView btnOpenPreview = sheetView.findViewById(R.id.btnOpenPreview);
 
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(book.getAccessInfo().getWebReaderLink()));
-                    context.startActivity(intent);
+                previewTitle.setText(volumeInfo.getTitle());
+                previewAuthor.setText(volumeInfo.getAuthors() != null ? String.join(", ", volumeInfo.getAuthors()) : "Unknown Author");
+
+                String sheetImageUrl = volumeInfo.getImageLinks() != null ? volumeInfo.getImageLinks().getThumbnail() : null;
+                if (!TextUtils.isEmpty(sheetImageUrl)) {
+                    if (sheetImageUrl.startsWith("http://")) {
+                        sheetImageUrl = sheetImageUrl.replace("http://", "https://");
+                    }
+                    Glide.with(context)
+                            .load(sheetImageUrl)
+                            .placeholder(R.drawable.book_loading)
+                            .error(R.drawable.no_image)
+                            .into(previewImage);
+                } else {
+                    previewImage.setImageResource(R.drawable.no_image);
                 }
+
+                btnOpenPreview.setOnClickListener(btn -> {
+                    Utils.haptic(btnOpenPreview.getContext());
+                    if (book.getAccessInfo() != null && book.getAccessInfo().getWebReaderLink() != null) {
+                        String link = book.getAccessInfo().getWebReaderLink();
+
+                        // Save to SharedPreferences
+                        String bookJson = new Gson().toJson(book);
+                        RecentlyViewedManager.addBook(context, bookJson);
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                        context.startActivity(intent);
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             });
 
         }
     }
 
-
-    @Override
-    public int getItemCount() {
-        return bookList.size();
-    }
-
     static class BookHolder extends RecyclerView.ViewHolder {
         TextView bookTitle, bookAuthor;
         ImageView bookImage;
+        ShimmerFrameLayout shimmerImageLayout;
 
         public BookHolder(@NonNull View itemView) {
             super(itemView);
             bookTitle = itemView.findViewById(R.id.bookTitle);
             bookAuthor = itemView.findViewById(R.id.bookAuthor);
             bookImage = itemView.findViewById(R.id.bookImage);
+            shimmerImageLayout = itemView.findViewById(R.id.shimmerImageLayout);
         }
     }
 }
