@@ -31,6 +31,12 @@ public class ModelBook {
         @SerializedName("imageLinks")
         private ImageLinks imageLinks;  // Correct place for imageLinks
 
+        @SerializedName("description")
+        private String description;
+
+        @SerializedName("averageRating")
+        private float averageRating;
+
         public String getTitle() {
             return title;
         }
@@ -41,6 +47,14 @@ public class ModelBook {
 
         public ImageLinks getImageLinks() {
             return imageLinks;
+        }
+
+        public String getDescription() {
+            return (description != null) ? description : "No description available.";
+        }
+
+        public float getAverageRating() {
+            return averageRating;
         }
     }
 

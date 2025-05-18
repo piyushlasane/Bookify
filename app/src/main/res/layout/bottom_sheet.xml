@@ -43,6 +43,7 @@
             android:textSize="24sp" />
 
         <ImageView
+            android:id="@+id/starIcon"
             android:layout_width="0dp"
             android:layout_height="34dp"
             android:layout_gravity="bottom"
@@ -67,7 +68,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="            Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus faucibus vestibulum leo aenean nunc bibendum sollicitudin. Molestie sollici Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus faucibus vestibulum leo aenean nunc bibendum sollicitudin. Molestie sollici             Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus faucibus vestibulum leo aenean nunc bibendum sollicitudin. Molestie sollici "
+        android:text="@string/description"
+        android:maxLines="10"
+        android:ellipsize="end"
         android:textSize="15sp"/>
 
     <TextView

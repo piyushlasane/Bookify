@@ -17,6 +17,14 @@
         android:textSize="20sp"
         tools:ignore="VisualLintOverlap" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerWishlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/book_item_wishlist"
+        android:layout_below="@id/title"
+        android:visibility="visible" />
+
     <LinearLayout
         android:id="@+id/empty_view"
         android:layout_width="match_parent"

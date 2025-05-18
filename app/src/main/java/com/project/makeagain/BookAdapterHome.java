@@ -6,16 +6,15 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -151,17 +150,25 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
             // Handle click to open webReaderLink
             holder.itemView.setOnClickListener(v -> {
 
-                @SuppressLint("InflateParams") View sheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_book_preview, null);
+                @SuppressLint("InflateParams") View sheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet, null);
                 BottomSheetDialog dialog = new BottomSheetDialog(context);
                 dialog.setContentView(sheetView);
 
                 ImageView previewImage = sheetView.findViewById(R.id.previewImage);
                 TextView previewTitle = sheetView.findViewById(R.id.previewTitle);
                 TextView previewAuthor = sheetView.findViewById(R.id.previewAuthor);
+                TextView descriptionView  = sheetView.findViewById(R.id.description );
                 TextView btnOpenPreview = sheetView.findViewById(R.id.btnOpenPreview);
+                ImageView starIcon = sheetView.findViewById(R.id.starIcon);
 
                 previewTitle.setText(volumeInfo.getTitle());
                 previewAuthor.setText(volumeInfo.getAuthors() != null ? String.join(", ", volumeInfo.getAuthors()) : "Unknown Author");
+                descriptionView.setText(volumeInfo.getDescription());
+
+                starIcon.setOnClickListener(x -> {
+                    WishlistManager.addToWishlist(book); // currentBook is of type ModelBook
+                    Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show();
+                });
 
                 String sheetImageUrl = volumeInfo.getImageLinks() != null ? volumeInfo.getImageLinks().getThumbnail() : null;
                 if (!TextUtils.isEmpty(sheetImageUrl)) {

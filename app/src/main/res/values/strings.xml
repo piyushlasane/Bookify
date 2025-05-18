@@ -41,4 +41,8 @@
     <string name="failed_to_load">Failed to load data</string>
     <string name="read_more">Read More</string>
     <string name="remove_from_wishlist">Remove from Wishlist</string>
+    <string name="free">Free</string>
+    <string name="view">View</string>
+    <string name="description">Description</string>
+    <string name="no_title">No Title</string>
 </resources>
