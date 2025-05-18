@@ -10,45 +10,47 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:textSize="20sp"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/wishlist"/>
+        android:gravity="center_horizontal"
+        android:text="@string/wishlist"
+        android:textSize="20sp"
+        tools:ignore="VisualLintOverlap" />
 
     <LinearLayout
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="24dp">
 
         <ImageView
             android:id="@+id/empty_image"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/icon_read_book"
+            android:layout_marginBottom="24dp"
             android:contentDescription="@string/empty_wishlist_image"
-            android:layout_marginBottom="24dp" />
+            android:src="@drawable/icon_read_book"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/empty_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/my_wishlist_is_empty"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginBottom="8dp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/empty_subtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:text="@string/find_something"
-            android:textSize="14sp"
-            android:layout_marginBottom="24dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/exploreButton"
@@ -62,7 +64,7 @@
             android:paddingVertical="8dp"
             android:text="@string/explore"
             android:textColor="@color/white"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -40,4 +40,5 @@
     <string name="no_results_found">No results found</string>
     <string name="failed_to_load">Failed to load data</string>
     <string name="read_more">Read More</string>
+    <string name="remove_from_wishlist">Remove from Wishlist</string>
 </resources>
