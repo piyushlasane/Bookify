@@ -10,7 +10,7 @@
     <span> | </span>
     <a href="https://your-live-app-link.com">App Download</a>
     <span> | </span>
-    <a href="https://www.figma.com/file/YourFigmaDesignLinkHere">Figma Design</a>
+    <a href="https://github.com/piyushlasane/bookify/releases/latest/download/bookify.apk">Figma Design</a>
   </h3>
 
 </div>
