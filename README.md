@@ -8,7 +8,7 @@
   <h3 align="center">
     <a href="https://github.com/piyushlasane/bookify">GitHub Repo</a>
     <span> | </span>
-    <a href="https://github.com/piyushlasane/bookify/releases/latest/download/bookify.apk">App Download</a>
+    <a href="https://your-live-app-link.com">App Download</a>
     <span> | </span>
     <a href="https://github.com/piyushlasane/bookify/releases/latest/download/bookify.apk">Figma Design</a>
   </h3>
@@ -74,22 +74,33 @@ Figma Design Preview: [🔗 Click me](https://www.figma.com/file/your_figma_link
 You can include screenshots here like:
 <p float="left">
   ### 📱 Login Page 
+   <p float="left">
+<img src="src_code/img1.png" width="300"/>
+  <img src="src_code/img2.png" width="300"/>
+</p>
   
-  ### 📱 Main Page
-  <img src="screenshots/home.png" width="200"/>
-  <img src="screenshots/search.png" width="200"/>
+  ### 📱 Main Page  
+   <p float="left">
+<img src="src_code/img3.png" width="300"/> 
+</p>
   
-  ### 📱 Book Detail
-  <img src="screenshots/home.png" width="200"/>
-  <img src="screenshots/search.png" width="200"/>
+  
+  ### 📱 Book Detail 
+  <p float="left">
+<img src="src_code/img2.png" width="300"/> 
+</p>
   
   ### 📱 Favorites Screen  
-  <img src="screenshots/home.png" width="200"/>
-  <img src="screenshots/search.png" width="200"/>
+   <p float="left">
+<img src="src_code/img5.png" width="300"/> 
+<img src="src_code/img4.png" width="300"/> 
+</p>
   
-  ### 📱 Profile Update Screen
-  <img src="screenshots/home.png" width="200"/>
-  <img src="screenshots/search.png" width="200"/>
+  ### 📱 Profile Update Screen  
+<p float="left">
+<img src="src_code/img6.png" width="300"/> 
+<img src="src_code/img7.png" width="300"/> 
+</p>
 
   
 </p>
