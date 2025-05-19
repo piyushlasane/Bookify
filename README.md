@@ -17,7 +17,7 @@
 <h2 align="center">📱 Scan to Try the App</h2>
 
 <p align="center">
-  <img src="src_code/download (1).png" alt="QR Code" width="200"/>
+  <img src="src_code/img10.png" alt="QR Code" width="200"/>
 </p>
 
 
