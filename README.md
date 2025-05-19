@@ -9,7 +9,7 @@
     <span> | </span>
     <a href="https://github.com/piyushlasane/bookify/releases/latest/download/bookify.apk">App Download</a>
     <span> | </span>
-    <a href="https://github.com/piyushlasane/bookify/releases/latest/download/bookify.apk">Figma Design</a>
+    <a href="[https://github.com/piyushlasane/bookify/releases/latest/download/bookify.apk](https://www.figma.com/community/file/1506295342771705504/bookify-app-design)">Figma Design</a>
   </h3>
 
 </div>
