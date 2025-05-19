@@ -79,30 +79,30 @@ Figma Design Preview: [🔗 Click me]( https://www.figma.com/community/file/1506
 You can include screenshots here like:
 ### 📱 Login Page 
 <p float="left">
-  <img src="src_code/img1.png" width="250" height="500"/>
-  <img src="src_code/img2.png" width="250" height="500"/>
+  <img src="src_code/img1.png" width="250"  />
+  <img src="src_code/img2.png" width="250"/>
 </p>
 
 ### 📱 Main Page  
 <p float="left">
-  <img src="src_code/img3.png" width="250" height="500"/> 
+  <img src="src_code/img3.png" width="250"  /> 
 </p>
 
 ### 📱 Book Detail 
 <p float="left">
-  <img src="src_code/img8.png" width="250" height="500"/> 
+  <img src="src_code/img8.png" width="250"  /> 
 </p>
 
 ### 📱 Favorites Screen  
 <p float="left">
-  <img src="src_code/img5.png" width="250" height="500"/> 
-  <img src="src_code/img4.png" width="250" height="500"/> 
+  <img src="src_code/img5.png" width="250" /> 
+  <img src="src_code/img4.png" width="250" /> 
 </p>
 
 ### 📱 Profile Update Screen  
 <p float="left">
-  <img src="src_code/img6.png" width="250" height="500"/> 
-  <img src="src_code/img7.png" width="250" height="500"/> 
+  <img src="src_code/img6.png" width="250" > 
+  <img src="src_code/img7.png" width="250" /> 
 </p>
 
 
