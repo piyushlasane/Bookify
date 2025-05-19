@@ -21,5 +21,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MakeAgain"
-include(":src_code:app")
+include(":app")
  
