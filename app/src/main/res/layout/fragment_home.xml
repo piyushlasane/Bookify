@@ -13,8 +13,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/welcome"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="@color/gray"
-        android:textSize="15sp"
+        android:textSize="13sp"
         tools:ignore="RelativeOverlap" />
 
     <TextView
@@ -26,7 +27,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/default_name"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <ImageView
@@ -64,6 +65,7 @@
             android:layout_weight="1"
             android:background="@drawable/shape_blank"
             android:hint="@string/search_books"
+            android:fontFamily="@font/poppins_regular"
             android:inputType="text"
             android:imeOptions="actionSearch"
             android:minHeight="48dp" />

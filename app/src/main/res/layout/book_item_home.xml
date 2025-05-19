@@ -58,13 +58,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:ellipsize="end"
-        android:fontFamily="@font/crimsontext_bold"
+        android:fontFamily="@font/poppins_bold"
         android:maxWidth="250dp"
         android:maxLines="1"
         android:minWidth="100dp"
         android:text="@string/book_title"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/bookAuthor"
@@ -72,12 +72,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:ellipsize="end"
-        android:fontFamily="@font/crimsontext_bold"
+        android:textStyle="italic"
+        android:fontFamily="@font/poppins_medium"
         android:maxWidth="250dp"
         android:maxLines="1"
         android:minWidth="100dp"
         android:text="@string/book_author"
         android:textColor="@color/black"
-        android:textSize="13sp" />
+        android:textSize="11sp" />
 
 </LinearLayout>

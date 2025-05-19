@@ -1,17 +1,29 @@
 package com.project.makeagain;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -34,9 +46,10 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         ModelBook book = bookList.get(position);
-        ModelBook.VolumeInfo info = book.getVolumeInfo();
+        ModelBook.VolumeInfo volumeInfo = book.getVolumeInfo();
 
-        if (info == null) {
+
+        if (volumeInfo == null) {
             holder.title.setText(R.string.no_title);
             holder.author.setText(R.string.unknown_author);
             holder.ratingBar.setRating(0);
@@ -44,19 +57,22 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
             return;
         }
 
-        holder.title.setText(info.getTitle() != null ? info.getTitle() : "No Title");
+        holder.title.setText(volumeInfo.getTitle() != null ? volumeInfo.getTitle() : "No Title");
 
-        List<String> authors = info.getAuthors();
+        List<String> authors = volumeInfo.getAuthors();
         if (authors != null && !authors.isEmpty()) {
             holder.author.setText(authors.get(0));
         } else {
             holder.author.setText(R.string.unknown_author);
         }
 
-        holder.ratingBar.setRating(info.getAverageRating());
+        holder.ratingBar.setRating(volumeInfo.getAverageRating());
 
-        String imageUrl = (info.getImageLinks() != null) ? info.getImageLinks().getThumbnail() : null;
+        String imageUrl = (volumeInfo.getImageLinks() != null) ? volumeInfo.getImageLinks().getThumbnail() : null;
         if (imageUrl != null && !imageUrl.isEmpty()) {
+            if (imageUrl.startsWith("http://")) {
+                imageUrl = imageUrl.replace("http://", "https://");
+            }
             Glide.with(holder.image.getContext())
                     .load(imageUrl)
                     .placeholder(R.drawable.icon_read_book)
@@ -67,11 +83,112 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
         }
 
         holder.removeIcon.setOnClickListener(v -> {
-            WishlistManager.removeFromWishlist(book);
-            notifyItemRemoved(holder.getAdapterPosition());
-            notifyItemRangeChanged(holder.getAdapterPosition(), bookList.size());
-            Toast.makeText(v.getContext(), "Removed from Wishlist", Toast.LENGTH_SHORT).show();
+
+            Context context = v.getContext();
+
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
+                    .setTitle("Remove from Wishlist")
+                    .setMessage("Do you really want to remove this book?")
+                    .setIcon(R.drawable.icon_alert)
+                    .setPositiveButton("Remove", (dialog, which) -> {
+                        ModelBook bookToRemove = bookList.get(position);
+                        WishlistManager.removeFromWishlist(bookToRemove);
+                        notifyItemRemoved(position);
+                        Toast.makeText(context, "Book removed", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .setCancelable(true);
+
+            androidx.appcompat.app.AlertDialog dialog = builder.create();
+
+            dialog.setOnShowListener(d -> {
+                int black = ContextCompat.getColor(context, R.color.black);
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(black);
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(black);
+            });
+
+            dialog.show();
         });
+
+        holder.itemView.setOnClickListener(v -> {
+            Context context = v.getContext();
+            @SuppressLint("InflateParams") View sheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet, null);
+            BottomSheetDialog dialog = new BottomSheetDialog(context);
+            dialog.setContentView(sheetView);
+
+            ImageView previewImage = sheetView.findViewById(R.id.previewImage);
+            TextView previewTitle = sheetView.findViewById(R.id.previewTitle);
+            TextView previewAuthor = sheetView.findViewById(R.id.previewAuthor);
+            TextView descriptionView  = sheetView.findViewById(R.id.description );
+            TextView btnOpenPreview = sheetView.findViewById(R.id.btnOpenPreview);
+            ImageView starIcon = sheetView.findViewById(R.id.starIcon);
+            if (WishlistManager.isInWishlist(book)) {
+                starIcon.setImageResource(R.drawable.icon_filled_star);
+            } else {
+                starIcon.setImageResource(R.drawable.icon_star);
+            }
+            previewTitle.setText(volumeInfo.getTitle());
+            previewAuthor.setText(volumeInfo.getAuthors() != null ? String.join(", ", volumeInfo.getAuthors()) : "Unknown Author");
+            descriptionView.setText(volumeInfo.getDescription());
+
+            starIcon.setOnClickListener(x -> {
+                ScaleAnimation scale = new ScaleAnimation(
+                        0.8f, 1.2f, // from X, to X
+                        0.8f, 1.2f, // from Y, to Y
+                        Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF, 0.5f
+                );
+                scale.setDuration(150);
+                scale.setRepeatCount(1);
+                scale.setRepeatMode(Animation.REVERSE);
+
+                starIcon.startAnimation(scale);
+
+                if (WishlistManager.isInWishlist(book)) {
+                    WishlistManager.removeFromWishlist(book);
+                    Toast.makeText(context, "Removed from Wishlist", Toast.LENGTH_SHORT).show();
+                    starIcon.setImageResource(R.drawable.icon_star);
+                } else {
+                    WishlistManager.addToWishlist(book);
+                    Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show();
+                    starIcon.setImageResource(R.drawable.icon_filled_star);
+                }
+            });
+
+
+
+            String sheetImageUrl = volumeInfo.getImageLinks() != null ? volumeInfo.getImageLinks().getThumbnail() : null;
+            if (!TextUtils.isEmpty(sheetImageUrl)) {
+                if (sheetImageUrl.startsWith("http://")) {
+                    sheetImageUrl = sheetImageUrl.replace("http://", "https://");
+                }
+                Glide.with(context)
+                        .load(sheetImageUrl)
+                        .placeholder(R.drawable.book_loading)
+                        .error(R.drawable.no_image)
+                        .into(previewImage);
+            } else {
+                previewImage.setImageResource(R.drawable.no_image);
+            }
+
+            btnOpenPreview.setOnClickListener(btn -> {
+                Utils.haptic(btnOpenPreview.getContext());
+                if (book.getAccessInfo() != null && book.getAccessInfo().getWebReaderLink() != null) {
+                    String link = book.getAccessInfo().getWebReaderLink();
+
+                    // Save to SharedPreferences
+                    String bookJson = new Gson().toJson(book);
+                    RecentlyViewedManager.addBook(context, bookJson);
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                    context.startActivity(intent);
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+        });
+
     }
 
 

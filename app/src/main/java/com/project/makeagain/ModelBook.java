@@ -7,6 +7,29 @@ import java.util.Optional;
 
 public class ModelBook {
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        ModelBook other = (ModelBook) obj;
+
+        String thisId = (this.getVolumeInfo() != null ? this.getVolumeInfo().getTitle() : "")
+                + (this.getAccessInfo() != null ? this.getAccessInfo().getWebReaderLink() : "");
+
+        String otherId = (other.getVolumeInfo() != null ? other.getVolumeInfo().getTitle() : "")
+                + (other.getAccessInfo() != null ? other.getAccessInfo().getWebReaderLink() : "");
+
+        return thisId.equals(otherId);
+    }
+
+    @Override
+    public int hashCode() {
+        String id = (getVolumeInfo() != null ? getVolumeInfo().getTitle() : "")
+                + (getAccessInfo() != null ? getAccessInfo().getWebReaderLink() : "");
+        return id.hashCode();
+    }
+
     @SerializedName("volumeInfo")
     private VolumeInfo volumeInfo;
 

@@ -3,18 +3,23 @@ package com.project.makeagain;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -126,7 +131,7 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                         .error(R.drawable.no_image)
                         .listener(new RequestListener<Drawable>() {
                             @Override
-                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
                                 holder.bookImage.setVisibility(View.VISIBLE);
                                 holder.shimmerImageLayout.stopShimmer();
                                 holder.shimmerImageLayout.setVisibility(View.GONE);
@@ -134,7 +139,7 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                             }
 
                             @Override
-                            public boolean onResourceReady(@NonNull Drawable resource, @NonNull Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            public boolean onResourceReady(@NonNull Drawable resource, @NonNull Object model, Target<Drawable> target, @NonNull DataSource dataSource, boolean isFirstResource) {
                                 holder.bookImage.setVisibility(View.VISIBLE);
                                 holder.shimmerImageLayout.stopShimmer();
                                 holder.shimmerImageLayout.setVisibility(View.GONE);
@@ -160,14 +165,37 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                 TextView descriptionView  = sheetView.findViewById(R.id.description );
                 TextView btnOpenPreview = sheetView.findViewById(R.id.btnOpenPreview);
                 ImageView starIcon = sheetView.findViewById(R.id.starIcon);
-
+                if (WishlistManager.isInWishlist(book)) {
+                    starIcon.setImageResource(R.drawable.icon_filled_star);
+                } else {
+                    starIcon.setImageResource(R.drawable.icon_star);
+                }
                 previewTitle.setText(volumeInfo.getTitle());
                 previewAuthor.setText(volumeInfo.getAuthors() != null ? String.join(", ", volumeInfo.getAuthors()) : "Unknown Author");
                 descriptionView.setText(volumeInfo.getDescription());
 
                 starIcon.setOnClickListener(x -> {
-                    WishlistManager.addToWishlist(book); // currentBook is of type ModelBook
-                    Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show();
+                    ScaleAnimation scale = new ScaleAnimation(
+                            0.8f, 1.2f, // from X, to X
+                            0.8f, 1.2f, // from Y, to Y
+                            Animation.RELATIVE_TO_SELF, 0.5f,
+                            Animation.RELATIVE_TO_SELF, 0.5f
+                    );
+                    scale.setDuration(150);
+                    scale.setRepeatCount(1);
+                    scale.setRepeatMode(Animation.REVERSE);
+
+                    starIcon.startAnimation(scale);
+
+                    if (WishlistManager.isInWishlist(book)) {
+                        WishlistManager.removeFromWishlist(book);
+                        Toast.makeText(context, "Removed from Wishlist", Toast.LENGTH_SHORT).show();
+                        starIcon.setImageResource(R.drawable.icon_star);
+                    } else {
+                        WishlistManager.addToWishlist(book);
+                        Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show();
+                        starIcon.setImageResource(R.drawable.icon_filled_star);
+                    }
                 });
 
                 String sheetImageUrl = volumeInfo.getImageLinks() != null ? volumeInfo.getImageLinks().getThumbnail() : null;

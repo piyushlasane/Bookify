@@ -19,4 +19,8 @@ public class WishlistManager {
         return wishlist;
     }
 
+    public static boolean isInWishlist(ModelBook book) {
+        return wishlist.contains(book);
+    }
+
 }
