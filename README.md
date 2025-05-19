@@ -72,13 +72,26 @@ Figma Design Preview: [🔗 Click me](https://www.figma.com/file/your_figma_link
 ### 📸 UI Screenshots (Optional)
 
 You can include screenshots here like:
-
 <p float="left">
+  ### 📱 Login Page 
+  
+  ### 📱 Main Page
   <img src="screenshots/home.png" width="200"/>
   <img src="screenshots/search.png" width="200"/>
-  <img src="screenshots/favorites.png" width="200"/>
-  <img src="screenshots/profile.png" width="200"/>
-  <img src="screenshots/profile_update.png" width="200"/>
+  
+  ### 📱 Book Detail
+  <img src="screenshots/home.png" width="200"/>
+  <img src="screenshots/search.png" width="200"/>
+  
+  ### 📱 Favorites Screen  
+  <img src="screenshots/home.png" width="200"/>
+  <img src="screenshots/search.png" width="200"/>
+  
+  ### 📱 Profile Update Screen
+  <img src="screenshots/home.png" width="200"/>
+  <img src="screenshots/search.png" width="200"/>
+
+  
 </p>
 
 ---
