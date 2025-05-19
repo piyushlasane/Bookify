@@ -14,8 +14,14 @@
 
 </div>
 
----
- 
+<h2 align="center">📱 Scan to Try the App</h2>
+
+<p align="center">
+  <img src="YOUR_QR_CODE_IMAGE_URL" alt="QR Code" width="200"/>
+</p>
+
+
+--- 
 ## About
 
 *Bookify* is a modern Android application built to provide users with a seamless book discovery and management experience. Users can explore book listings, save favorites, and interact with the app through a user-friendly interface. This project leverages modern Android development tools and integrates external APIs for enhanced functionality.
