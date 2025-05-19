@@ -85,7 +85,7 @@ You can include screenshots here like:
 
 ### 📱 Book Detail 
 <p float="left">
-  <img src="src_code/img2.png" width="250" height="500"/> 
+  <img src="src_code/img8.png" width="250" height="500"/> 
 </p>
 
 ### 📱 Favorites Screen  
