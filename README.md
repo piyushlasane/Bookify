@@ -108,12 +108,8 @@ You can include screenshots here like:
 
 ## 🛠 Teammates
 
-We are grateful to these wonderful people who contributed to Bookify. 🙏 ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+We are grateful to these wonderful people who contributed to Bookify.  
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- ALL-CONTRIBUTORS-LIST:START -->
 <table>
   <tbody>
     <tr>
@@ -139,7 +135,6 @@ We are grateful to these wonderful people who contributed to Bookify. 🙏 ([emo
         <a href="#maintenance-Sushrut_001" title="Maintenance">🚧</a>
       </td>
      
-    </tr>
   </tbody>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
