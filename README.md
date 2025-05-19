@@ -64,7 +64,7 @@ The Bookify app is designed with a clean, modern, and intuitive user interface f
 | ✏ Profile Update Screen| Allows editing user details and profile picture.             |
 | ⚙ Settings             | Toggle light/dark mode, preferences.                         |
 
-Figma Design Preview: [🔗 Click me](https://www.figma.com/file/your_figma_link_here)
+Figma Design Preview: [🔗 Click me]( https://www.figma.com/community/file/1506295342771705504/bookify-app-design)
 
 ---
 
