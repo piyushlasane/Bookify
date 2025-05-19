@@ -2,8 +2,7 @@
 
 <div align="center">
   
-  <a href="https://github.com/piyushlasane/bookify" target="_blank"><img src="https://img.shields.io/github/stars/piyushlasane/bookify?style=social" alt="GitHub Repo stars"></a>
-  <a href="https://www.figma.com/file/YourFigmaDesignLinkHere" target="_blank"><img src="https://img.shields.io/badge/Design-Figma-blue?logo=figma" alt="View Design on Figma"></a>
+  <a href="https://github.com/piyushlasane/bookify" target="_blank"><img src="https://img.shields.io/github/stars/piyushlasane/bookify?style=social" alt="GitHub Repo stars"></a> 
 
   <h3 align="center">
     <a href="https://github.com/piyushlasane/bookify">GitHub Repo</a>
