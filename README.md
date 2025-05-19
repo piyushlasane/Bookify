@@ -72,35 +72,34 @@ Figma Design Preview: [🔗 Click me](https://www.figma.com/file/your_figma_link
 ### 📸 UI Screenshots (Optional)
 
 You can include screenshots here like:
+### 📱 Login Page 
 <p float="left">
-  ### 📱 Login Page 
-   <p float="left">
-<img src="src_code/img1.png" width="300"/>
-  <img src="src_code/img2.png" width="300"/>
+  <img src="src_code/img1.png" width="250" height="500"/>
+  <img src="src_code/img2.png" width="250" height="500"/>
 </p>
-  
-  ### 📱 Main Page  
-   <p float="left">
-<img src="src_code/img3.png" width="300"/> 
-</p>
-  
-  
-  ### 📱 Book Detail 
-  <p float="left">
-<img src="src_code/img2.png" width="300"/> 
-</p>
-  
-  ### 📱 Favorites Screen  
-   <p float="left">
-<img src="src_code/img5.png" width="300"/> 
-<img src="src_code/img4.png" width="300"/> 
-</p>
-  
-  ### 📱 Profile Update Screen  
+
+### 📱 Main Page  
 <p float="left">
-<img src="src_code/img6.png" width="300"/> 
-<img src="src_code/img7.png" width="300"/> 
+  <img src="src_code/img3.png" width="250" height="500"/> 
 </p>
+
+### 📱 Book Detail 
+<p float="left">
+  <img src="src_code/img2.png" width="250" height="500"/> 
+</p>
+
+### 📱 Favorites Screen  
+<p float="left">
+  <img src="src_code/img5.png" width="250" height="500"/> 
+  <img src="src_code/img4.png" width="250" height="500"/> 
+</p>
+
+### 📱 Profile Update Screen  
+<p float="left">
+  <img src="src_code/img6.png" width="250" height="500"/> 
+  <img src="src_code/img7.png" width="250" height="500"/> 
+</p>
+
 
   
 </p>
