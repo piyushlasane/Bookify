@@ -106,7 +106,7 @@ You can include screenshots here like:
 
 ---
 
-## 🛠 Project Structure
+## 🛠 Teammates
 
 We are grateful to these wonderful people who contributed to Bookify. 🙏 ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -117,6 +117,16 @@ We are grateful to these wonderful people who contributed to Bookify. 🙏 ([emo
 <table>
   <tbody>
     <tr>
+       <td align="center">
+        <a href="https://github.com/piyushlasane">
+          <img src="https://avatars.githubusercontent.com/u/160647609?v=4" width="100" alt="Piyush Lasane"/><br />
+          <sub><b>Piyush Lasane</b></sub>
+        </a><br />
+        <a href="https://github.com/sushrut-001/bookify/commits?author=piyushlasane" title="Code">💻</a>
+        <a href="#design-piyushlasane" title="Design">🎨</a>
+        <a href="#testing-piyushlasane" title="Testing">⚠</a>
+        <a href="#doc-piyushlasane" title="Documentation">📖</a>
+      </td>
       <td align="center">
         <a href="https://github.com/Sushrut_001">
           <img src="https://avatars.githubusercontent.com/u/98377130?s=400&u=c9e5828304529d668fb5dee39b1894eba2b468c8&v=4" width="100" alt="Sushrut G"/><br />
@@ -128,16 +138,7 @@ We are grateful to these wonderful people who contributed to Bookify. 🙏 ([emo
         <a href="#projectManagement-Sushrut_001" title="Project Management">📆</a>
         <a href="#maintenance-Sushrut_001" title="Maintenance">🚧</a>
       </td>
-      <td align="center">
-        <a href="https://github.com/piyushlasane">
-          <img src="https://avatars.githubusercontent.com/u/160647609?v=4" width="100" alt="Piyush Lasane"/><br />
-          <sub><b>Piyush Lasane</b></sub>
-        </a><br />
-        <a href="https://github.com/sushrut-001/bookify/commits?author=piyushlasane" title="Code">💻</a>
-        <a href="#design-piyushlasane" title="Design">🎨</a>
-        <a href="#testing-piyushlasane" title="Testing">⚠</a>
-        <a href="#doc-piyushlasane" title="Documentation">📖</a>
-      </td>
+     
     </tr>
   </tbody>
 </table>
