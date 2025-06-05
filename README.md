@@ -128,7 +128,7 @@ We are grateful to these wonderful people who contributed to Bookify.
         <a href="#doc-piyushlasane" title="Documentation">📖</a>
       </td>
       <td align="center">
-        <a href="[https://github.com/Sushrut_001](https://github.com/Sushrut001)">
+        <a href="https://github.com/Sushrut001">
           <img src="https://avatars.githubusercontent.com/u/98377130?s=400&u=c9e5828304529d668fb5dee39b1894eba2b468c8&v=4" width="100" alt="Sushrut G"/><br />
           <sub><b>Sushrut G</b></sub>
         </a><br />
