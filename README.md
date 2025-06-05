@@ -50,11 +50,10 @@
  
 ### 🌐 API Integration
 - *Google Books API* — To fetch book data
-- **Retrofit ** — HTTP client for networking (based on your implementation)
+- *Retrofit* — HTTP client for networking (based on your implementation)
 
 ---
 
----
 
 ## 🎨 User Interface (UI) Overview
 
