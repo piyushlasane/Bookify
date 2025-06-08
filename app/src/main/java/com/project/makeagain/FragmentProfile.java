@@ -83,6 +83,7 @@ public class FragmentProfile extends Fragment {
 
     private void setupRecyclerView(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recentlyViewRecycler);
+        TextView emptyText = view.findViewById(R.id.text_no_recently_viewed);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
         JSONArray jsonArray = RecentlyViewedManager.getBooks(requireContext());
@@ -95,9 +96,16 @@ public class FragmentProfile extends Fragment {
         }
 
         Collections.reverse(books);
+        if (books.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            emptyText.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyText.setVisibility(View.GONE);
 
-        BookAdapterProfile adapter = new BookAdapterProfile(getContext(), books);
-        recyclerView.setAdapter(adapter);
+            BookAdapterProfile adapter = new BookAdapterProfile(getContext(), books);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     private void setupViewModel() {

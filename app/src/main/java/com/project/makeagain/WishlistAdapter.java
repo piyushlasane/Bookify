@@ -85,15 +85,17 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
         holder.removeIcon.setOnClickListener(v -> {
 
             Context context = v.getContext();
+            int pos = holder.getAdapterPosition();
+            if (pos == RecyclerView.NO_POSITION) return;
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
                     .setTitle("Remove from Wishlist")
                     .setMessage("Do you really want to remove this book?")
                     .setIcon(R.drawable.icon_alert)
                     .setPositiveButton("Remove", (dialog, which) -> {
-                        ModelBook bookToRemove = bookList.get(position);
+                        ModelBook bookToRemove = bookList.get(pos);
                         WishlistManager.removeFromWishlist(bookToRemove);
-                        notifyItemRemoved(position);
+                        notifyItemRemoved(pos);
                         Toast.makeText(context, "Book removed", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton("Cancel", null)

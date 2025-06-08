@@ -15,6 +15,7 @@ navigationUi = "2.9.0"
 retrofit = "2.9.0"
 books = "1.0.0"
 shimmer = "0.5.0"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
@@ -36,6 +37,7 @@ navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 books = { group = "com.google.android.mediahome", name = "books", version.ref = "books" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

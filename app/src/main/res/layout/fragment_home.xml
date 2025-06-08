@@ -90,19 +90,27 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHome"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_bar"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="15dp"
-        android:clipToPadding="false"
         android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        tools:listitem="@layout/book_item_home"
-        android:overScrollMode="never"
-        android:paddingHorizontal="8dp" />
+        android:paddingHorizontal="8dp" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            tools:listitem="@layout/book_item_home"
+            android:overScrollMode="never"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <TextView
         android:id="@+id/statusMessage"

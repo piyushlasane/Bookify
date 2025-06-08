@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -70,5 +71,11 @@ public class Utils {
                         capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
                         capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
     }
+
+    public static String getRandomKeyword() {
+        String[] keywords = {"life", "adventure", "science", "technology", "love", "success", "fiction", "history", "coding", "learning"};
+        return keywords[new Random().nextInt(keywords.length)];
+    }
+
 
 }

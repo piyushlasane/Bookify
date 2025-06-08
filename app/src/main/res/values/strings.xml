@@ -45,4 +45,5 @@
     <string name="view">View</string>
     <string name="description">Description</string>
     <string name="no_title">No Title</string>
+    <string name="no_recently_viewed_books_yet">No recently viewed books yet.</string>
 </resources>

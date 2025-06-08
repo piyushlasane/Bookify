@@ -28,6 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.gson.Gson;
 
@@ -50,6 +51,7 @@ public class FragmentHome extends Fragment {
     private TextView statusMessage;
     private ImageView micBtn;
     private ActivityResultLauncher<Intent> speechLauncher;
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class FragmentHome extends Fragment {
         bookList = new ArrayList<>();
         statusMessage = view.findViewById(R.id.statusMessage);
         micBtn = view.findViewById(R.id.micBtn);
+        swipeRefresh = view.findViewById(R.id.swipeRefresh);
         speechLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -114,7 +117,7 @@ public class FragmentHome extends Fragment {
 
         if (Utils.isNetworkAvailable(requireContext())) {
             statusMessage.setVisibility(View.GONE);
-            fetchBooks(getString(R.string.chava)); // Call API when Enter or ✔️ is pressed
+            fetchBooks(Utils.getRandomKeyword()); // Call API when Enter or ✔️ is pressed
         } else {
             statusMessage.setText(R.string.no_internet_connection);
             statusMessage.setVisibility(View.VISIBLE);
@@ -133,6 +136,14 @@ public class FragmentHome extends Fragment {
                 return true;
             }
             return false;
+        });
+
+        swipeRefresh.setOnRefreshListener(() -> {
+            hideKeyboard();
+            searchTerm.clearFocus();
+            searchTerm.setText("");
+            fetchBooks(Utils.getRandomKeyword());  // Get fresh books on pull
+            swipeRefresh.setRefreshing(false); // Stop the spinner manually after fetch
         });
 
     }
