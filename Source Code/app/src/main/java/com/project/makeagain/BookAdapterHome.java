@@ -124,7 +124,7 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                 Glide.with(context)
                         .load(mainImageUrl)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .placeholder(R.drawable.book_loading) // optional fallback
+                        .placeholder(R.color.white) // optional fallback
                         .error(R.drawable.no_image)
                         .listener(new RequestListener<Drawable>() {
                             @Override
@@ -202,7 +202,7 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                     }
                     Glide.with(context)
                             .load(sheetImageUrl)
-                            .placeholder(R.drawable.book_loading)
+                            .placeholder(R.color.white)
                             .error(R.drawable.no_image)
                             .into(previewImage);
                 } else {

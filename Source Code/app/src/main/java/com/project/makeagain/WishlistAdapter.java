@@ -166,7 +166,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
                 }
                 Glide.with(context)
                         .load(sheetImageUrl)
-                        .placeholder(R.drawable.book_loading)
+                        .placeholder(R.color.white)
                         .error(R.drawable.no_image)
                         .into(previewImage);
             } else {

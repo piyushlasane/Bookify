@@ -57,7 +57,7 @@ public class BookAdapterProfile extends RecyclerView.Adapter<BookAdapterProfile.
                 Glide.with(context)
                         .load(imageUrl)
                         .diskCacheStrategy(DiskCacheStrategy.ALL) // Ensures caching
-                        .placeholder(R.drawable.book_loading)  // Temporary image while loading
+                        .placeholder(R.color.white)  // Temporary image while loading
                         .error(R.drawable.no_image)  // If failed, show default image
                         .into(holder.bookImage);
 

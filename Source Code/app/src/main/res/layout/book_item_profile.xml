@@ -17,7 +17,7 @@
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:layout_gravity="center"
-        android:src="@drawable/book_mahabharata" />
+        android:src="@drawable/no_image" />
 
     <TextView
         android:id="@+id/bookTitle"

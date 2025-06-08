@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -93,8 +94,8 @@
                 android:textSize="20sp" />
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_margin="10sp"
                 android:contentDescription="@string/drop_down_arrow"
@@ -123,7 +124,8 @@
                 android:background="@drawable/shape_circle"
                 android:contentDescription="@string/submit_button"
                 android:padding="15dp"
-                android:src="@drawable/icon_rightarrow" />
+                android:src="@drawable/icon_rightarrow"
+                app:tint="@color/white" />
 
         </FrameLayout>
 

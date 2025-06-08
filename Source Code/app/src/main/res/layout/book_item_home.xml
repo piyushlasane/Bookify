@@ -47,7 +47,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/book_image"
                 android:scaleType="fitXY"
-                android:src="@drawable/book_mahabharata" />
+                android:src="@drawable/no_image" />
         </FrameLayout>
 
     </androidx.cardview.widget.CardView>
