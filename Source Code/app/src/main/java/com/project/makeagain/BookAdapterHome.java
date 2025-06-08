@@ -163,9 +163,9 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                 TextView btnOpenPreview = sheetView.findViewById(R.id.btnOpenPreview);
                 ImageView starIcon = sheetView.findViewById(R.id.starIcon);
                 if (WishlistManager.isInWishlist(book)) {
-                    starIcon.setImageResource(R.drawable.icon_filled_star);
+                    starIcon.setImageResource(R.drawable.xicon_filled_star);
                 } else {
-                    starIcon.setImageResource(R.drawable.icon_star);
+                    starIcon.setImageResource(R.drawable.xicon_star);
                 }
                 previewTitle.setText(volumeInfo.getTitle());
                 previewAuthor.setText(volumeInfo.getAuthors() != null ? String.join(", ", volumeInfo.getAuthors()) : "Unknown Author");
@@ -187,11 +187,11 @@ public class BookAdapterHome extends RecyclerView.Adapter<BookAdapterHome.BookHo
                     if (WishlistManager.isInWishlist(book)) {
                         WishlistManager.removeFromWishlist(book);
                         Toast.makeText(context, "Removed from Wishlist", Toast.LENGTH_SHORT).show();
-                        starIcon.setImageResource(R.drawable.icon_star);
+                        starIcon.setImageResource(R.drawable.xicon_star);
                     } else {
                         WishlistManager.addToWishlist(book);
                         Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show();
-                        starIcon.setImageResource(R.drawable.icon_filled_star);
+                        starIcon.setImageResource(R.drawable.xicon_filled_star);
                     }
                 });
 

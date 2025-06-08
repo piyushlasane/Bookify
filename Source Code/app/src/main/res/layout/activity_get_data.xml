@@ -99,7 +99,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10sp"
                 android:contentDescription="@string/drop_down_arrow"
-                android:src="@drawable/icon_downarrow" />
+                android:src="@drawable/xicon_downarrow" />
 
         </LinearLayout>
 
@@ -124,7 +124,7 @@
                 android:background="@drawable/shape_circle"
                 android:contentDescription="@string/submit_button"
                 android:padding="15dp"
-                android:src="@drawable/icon_rightarrow"
+                android:src="@drawable/xicon_rightarrow"
                 app:tint="@color/white" />
 
         </FrameLayout>

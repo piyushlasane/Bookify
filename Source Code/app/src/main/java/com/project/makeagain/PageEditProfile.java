@@ -72,7 +72,7 @@ public class PageEditProfile extends AppCompatActivity {
         spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                profileImage.setImageResource(spinnerGender.getSelectedItem().toString().equalsIgnoreCase("female") ? R.drawable.icon_female_profile : R.drawable.icon_male_profile);
+                profileImage.setImageResource(spinnerGender.getSelectedItem().toString().equalsIgnoreCase("female") ? R.drawable.profile_icon_female : R.drawable.profile_icon_male);
             }
 
             @Override
@@ -122,7 +122,7 @@ public class PageEditProfile extends AppCompatActivity {
 
         editName.setText(name);
         editUsername.setText(username);
-        profileImage.setImageResource(gender.equalsIgnoreCase("female") ? R.drawable.icon_female_profile : R.drawable.icon_male_profile);
+        profileImage.setImageResource(gender.equalsIgnoreCase("female") ? R.drawable.profile_icon_female : R.drawable.profile_icon_male);
 
         for (int i = 0; i < genderOptions.length; i++) {
             if (genderOptions[i].equals(gender)) {

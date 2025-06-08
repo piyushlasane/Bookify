@@ -138,7 +138,7 @@ public class PageGetData extends AppCompatActivity {
     }
 
     private void updateSubmitButton() {
-        int buttonDrawable = isNameFilled && isGenderSelected ? R.drawable.icon_loaded : R.drawable.icon_load;
+        int buttonDrawable = isNameFilled && isGenderSelected ? R.drawable.xicon_loaded : R.drawable.icon_load;
         submit.setBackground(ContextCompat.getDrawable(this, buttonDrawable));
     }
 

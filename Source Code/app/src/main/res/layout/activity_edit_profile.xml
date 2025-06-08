@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/icon_male_profile" />
+            android:src="@drawable/profile_icon_male" />
 
         <LinearLayout
             android:id="@+id/enterNameLayout"
@@ -148,7 +148,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:contentDescription="@string/drop_down_arrow"
-                android:src="@drawable/icon_downarrow" />
+                android:src="@drawable/xicon_downarrow" />
 
         </LinearLayout>
 

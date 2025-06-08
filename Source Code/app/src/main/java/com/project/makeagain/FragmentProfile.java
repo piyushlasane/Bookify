@@ -119,7 +119,7 @@ public class FragmentProfile extends Fragment {
 
         sharedViewModel.getGender().observe(getViewLifecycleOwner(), gender -> profileImage.setImageResource(
                 gender != null && gender.equalsIgnoreCase("female") ?
-                        R.drawable.icon_female_profile : R.drawable.icon_male_profile));
+                        R.drawable.profile_icon_female : R.drawable.profile_icon_male));
     }
 
     private void setupPieChart() {

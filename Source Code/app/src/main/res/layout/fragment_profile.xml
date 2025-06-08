@@ -33,7 +33,7 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:src="@drawable/icon_male_profile" />
+            android:src="@drawable/profile_icon_male" />
 
         <TextView
             android:id="@+id/name"

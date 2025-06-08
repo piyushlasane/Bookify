@@ -50,7 +50,7 @@
             android:layout_weight="1"
 
             android:contentDescription="@string/wishlist"
-            android:src="@drawable/icon_star"
+            android:src="@drawable/xicon_star"
             app:tint="@color/orange" />
 
     </LinearLayout>
