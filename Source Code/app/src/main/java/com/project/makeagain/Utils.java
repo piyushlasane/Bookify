@@ -2,7 +2,6 @@ package com.project.makeagain;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -11,14 +10,10 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 

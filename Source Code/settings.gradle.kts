@@ -20,6 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MakeAgain"
+rootProject.name = "Bookify"
 include(":app")
  

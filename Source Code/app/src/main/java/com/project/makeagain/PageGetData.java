@@ -25,8 +25,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import java.util.Objects;
-
 public class PageGetData extends AppCompatActivity {
 
     private boolean isNameFilled = false;
