@@ -73,9 +73,8 @@ public class Utils {
     }
 
     public static String getRandomKeyword() {
-        String[] keywords = {"life", "adventure", "science", "technology", "love", "success", "fiction", "history", "coding", "learning"};
+        String[] keywords = {"adventures", "science", "technology", "love", "success", "fiction", "learning"};
         return keywords[new Random().nextInt(keywords.length)];
     }
-
 
 }
