@@ -55,7 +55,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:contentDescription="@string/user_image"
-                android:src="@drawable/icon_user" />
+                android:src="@drawable/icon_pencil" />
 
             <EditText
                 android:id="@+id/editName"
@@ -91,7 +91,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:contentDescription="@string/user_image"
-                android:src="@drawable/icon_user" />
+                android:src="@drawable/icon_pencil" />
 
             <EditText
                 android:id="@+id/editUserName"
@@ -128,7 +128,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:contentDescription="@string/user_image"
-                android:src="@drawable/icon_user" />
+                android:src="@drawable/icon_pencil" />
 
             <Spinner
                 android:id="@+id/spinnerGender"
@@ -148,7 +148,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:contentDescription="@string/drop_down_arrow"
-                android:src="@drawable/xicon_downarrow" />
+                android:src="@drawable/icon_downarrow" />
 
         </LinearLayout>
 

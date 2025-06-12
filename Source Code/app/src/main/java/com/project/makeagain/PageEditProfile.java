@@ -90,27 +90,37 @@ public class PageEditProfile extends AppCompatActivity {
             return false;
         });
         updateProfile.setOnClickListener(v -> {
-            // Create an Intent to send updated data back to the calling activity
             Utils.haptic(this);
-            String updatedName = editName.getText().toString();
-            String updatedUsername = editUsername.getText().toString();
+
+            String updatedName = editName.getText().toString().trim();
+            String updatedUsername = editUsername.getText().toString().trim();
             String updatedGender = spinnerGender.getSelectedItem().toString();
 
-            // Save updated data to SharedPreferences
             SharedPreferences sharedPreferences = getSharedPreferences("UserProfileData", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("name", updatedName);
-            editor.putString("username", updatedUsername);
-            editor.putString("gender", updatedGender);
-            editor.apply();
-
             Intent resultIntent = new Intent();
-            resultIntent.putExtra("name", updatedName);
-            resultIntent.putExtra("username", updatedUsername);
+
+            // Save name only if not empty
+            if (!updatedName.isEmpty()) {
+                editor.putString("name", updatedName);
+                resultIntent.putExtra("name", updatedName);
+            }
+
+            // Save username only if not empty
+            if (!updatedUsername.isEmpty()) {
+                editor.putString("username", updatedUsername);
+                resultIntent.putExtra("username", updatedUsername);
+            }
+
+            // Always save gender (as it has a selected value)
+            editor.putString("gender", updatedGender);
             resultIntent.putExtra("gender", updatedGender);
+
+            editor.apply();
             setResult(RESULT_OK, resultIntent);
             finish();
         });
+
     }
 
     public void prefill() {

@@ -77,7 +77,7 @@
         android:layout_height="24dp"
         android:layout_marginEnd="10dp"
         android:contentDescription="@string/remove_from_wishlist"
-        android:src="@drawable/xicon_remove"
+        android:src="@drawable/icon_remove"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/bookTitle" />
 

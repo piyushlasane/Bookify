@@ -91,7 +91,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context)
                     .setTitle("Remove from Wishlist")
                     .setMessage("Do you really want to remove this book?")
-                    .setIcon(R.drawable.xicon_alert)
+                    .setIcon(R.drawable.icon_alert)
                     .setPositiveButton("Remove", (dialog, which) -> {
                         ModelBook bookToRemove = bookList.get(pos);
                         WishlistManager.removeFromWishlist(bookToRemove);
@@ -125,9 +125,9 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
             TextView btnOpenPreview = sheetView.findViewById(R.id.btnOpenPreview);
             ImageView starIcon = sheetView.findViewById(R.id.starIcon);
             if (WishlistManager.isInWishlist(book)) {
-                starIcon.setImageResource(R.drawable.xicon_filled_star);
+                starIcon.setImageResource(R.drawable.icon_filled_star);
             } else {
-                starIcon.setImageResource(R.drawable.xicon_star);
+                starIcon.setImageResource(R.drawable.icon_star);
             }
             previewTitle.setText(volumeInfo.getTitle());
             previewAuthor.setText(volumeInfo.getAuthors() != null ? String.join(", ", volumeInfo.getAuthors()) : "Unknown Author");
@@ -149,11 +149,11 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.BookVi
                 if (WishlistManager.isInWishlist(book)) {
                     WishlistManager.removeFromWishlist(book);
                     Toast.makeText(context, "Removed from Wishlist", Toast.LENGTH_SHORT).show();
-                    starIcon.setImageResource(R.drawable.xicon_star);
+                    starIcon.setImageResource(R.drawable.icon_star);
                 } else {
                     WishlistManager.addToWishlist(book);
                     Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show();
-                    starIcon.setImageResource(R.drawable.xicon_filled_star);
+                    starIcon.setImageResource(R.drawable.icon_filled_star);
                 }
             });
 
