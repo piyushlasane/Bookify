@@ -63,7 +63,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/crimsontext_bold"
-            android:text="@string/recently_view"
+            android:text="@string/recently_viewed"
             android:textSize="20sp"
             android:textStyle="bold" />
 

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Bookify</string>
-    <string name="recently_view">Recently View</string>
+    <string name="recently_viewed">Recently Viewed</string>
     <string name="category_of_books">View category of books</string>
     <string name="submit_button">Submit</string>
     <string name="get_started">Get Started</string>
@@ -47,4 +47,5 @@
     <string name="no_title">No Title</string>
     <string name="no_recently_viewed_books_yet">No recently viewed books yet.</string>
     <string name="start_reading_to_see_your_book_stats_here">Start reading to\nsee your book stats here!</string>
+    <string name="no_notifications_for_now">No notifications for now ✔️</string>
 </resources>

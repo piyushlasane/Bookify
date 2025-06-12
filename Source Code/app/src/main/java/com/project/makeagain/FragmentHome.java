@@ -6,6 +6,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.speech.RecognizerIntent;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -16,6 +18,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +48,7 @@ public class FragmentHome extends Fragment {
     private BookAdapterHome adapter;
     private List<ModelBook> bookList;
     private TextView statusMessage;
-    private ImageView micBtn;
+    private ImageView micBtn, bell;
     private ActivityResultLauncher<Intent> speechLauncher;
     private SwipeRefreshLayout swipeRefresh;
 
@@ -64,6 +67,7 @@ public class FragmentHome extends Fragment {
         bookList = new ArrayList<>();
         statusMessage = view.findViewById(R.id.statusMessage);
         micBtn = view.findViewById(R.id.micBtn);
+        bell = view.findViewById(R.id.bell);
         swipeRefresh = view.findViewById(R.id.swipeRefresh);
         speechLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -95,6 +99,26 @@ public class FragmentHome extends Fragment {
             }
         });
 
+        bell.setOnClickListener(v -> {
+            Utils.haptic(requireContext());
+            View popupView = LayoutInflater.from(getContext()).inflate(R.layout.popup_notification, null);
+            PopupWindow popupWindow = new PopupWindow(
+                    popupView,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    true
+            );
+
+            // Show below the bell icon with a little vertical offset
+            popupWindow.showAsDropDown(v, 0, 10); // (xOffset, yOffset)
+
+            // Auto dismiss after 2 seconds safely
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                if (popupWindow.isShowing()) {
+                    popupWindow.dismiss();
+                }
+            }, 2000);
+        });
         setupRecyclerView();
 
         micBtn.setOnClickListener(v -> {

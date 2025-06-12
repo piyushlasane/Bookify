@@ -10,4 +10,5 @@
     <color name="book_card_grey">#475060</color>
     <color name="navbar_color">#060606</color>
     <color name="orange">#F5581B</color>
+    <color name="profile_book_bg">#2C2C2C</color>
 </resources>
