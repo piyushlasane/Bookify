@@ -117,5 +117,19 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp" />
 
+        <TextView
+            android:id="@+id/text_no_pie_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pie"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/start_reading_to_see_your_book_stats_here"
+            android:textColor="@color/darkgrey"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
     </RelativeLayout>
 </ScrollView>

@@ -123,48 +123,65 @@ public class FragmentProfile extends Fragment {
     }
 
     private void setupPieChart() {
+        JSONArray jsonArray = RecentlyViewedManager.getBooks(requireContext());
+        Map<String, Integer> categoryCountMap = new HashMap<>();
 
-        Map<String, Float> categoryData = new HashMap<>();
-        categoryData.put("Business and Economics", 55f);
-        categoryData.put("Adventure Stories", 30f);
-        categoryData.put("Comic Books", 5f);
-        categoryData.put("Philosophy", 10f);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String json = jsonArray.optString(i);
+            ModelBook book = new Gson().fromJson(json, ModelBook.class);
 
-        // Prepare entries for the Pie Chart
-        ArrayList<PieEntry> entries = new ArrayList<>();
-        for (Map.Entry<String, Float> entry : categoryData.entrySet()) {
-            entries.add(new PieEntry(entry.getValue(), entry.getKey()));
+            if (book.getVolumeInfo() != null && book.getVolumeInfo().getCategories() != null) {
+                for (String category : book.getVolumeInfo().getCategories()) {
+                    categoryCountMap.put(category, categoryCountMap.getOrDefault(category, 0) + 1);
+                }
+            }
         }
 
-        // Setting up PieDataSet
-        PieDataSet dataSet = new PieDataSet(entries, "ModelBook Categories");
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS); // Add more colors as needed
+        if (categoryCountMap.isEmpty()) {
+            pieChart.setVisibility(View.GONE);
+            TextView pieEmptyText = requireView().findViewById(R.id.text_no_pie_data);
+            pieEmptyText.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            requireView().findViewById(R.id.text_no_pie_data).setVisibility(View.GONE);
+            pieChart.setVisibility(View.VISIBLE);
+        }
+
+        int total = categoryCountMap.values().stream().mapToInt(i -> i).sum();
+        ArrayList<PieEntry> entries = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : categoryCountMap.entrySet()) {
+            float percentage = (entry.getValue() * 100f) / total;
+            entries.add(new PieEntry(percentage, entry.getKey()));
+        }
+
+        PieDataSet dataSet = new PieDataSet(entries, "Categories");
+        List<Integer> colors = Utils.getDistinctColors(entries.size());
+        dataSet.setColors(colors);
         dataSet.setValueTextColor(Color.BLACK);
         dataSet.setValueTextSize(12f);
         dataSet.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                return String.format(Locale.getDefault(), "%d%%", (int) value); // Display as integer
+                return String.format(Locale.getDefault(), "%d%%", (int) value);
             }
         });
 
-        // Setting up PieData
         PieData pieData = new PieData(dataSet);
         pieChart.setData(pieData);
 
-        // Customizing the Pie Chart
+        // Keep the rest same (styling, center text, etc.)
         pieChart.setUsePercentValues(true);
-        pieChart.setDrawEntryLabels(false); // Hide category names on the pie slices
-        pieChart.setDrawHoleEnabled(true); // For donut-like appearance
+        pieChart.setDrawEntryLabels(false);
+        pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleRadius(60f);
         pieChart.setHoleColor(getResources().getColor(R.color.page_background));
         pieChart.setCenterText("Categories");
         pieChart.setCenterTextSize(16f);
         pieChart.setCenterTextColor(getResources().getColor(R.color.black));
 
-        // Set legend (to mimic description style)
         Legend legend = pieChart.getLegend();
-        legend.setEnabled(true); // Enable legend
+        legend.setEnabled(true);
         legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
@@ -172,15 +189,11 @@ public class FragmentProfile extends Fragment {
         legend.setTextColor(getResources().getColor(R.color.black));
         legend.setTextSize(12f);
 
-        // Remove description (optional)
         Description description = new Description();
         description.setText("");
         pieChart.setDescription(description);
 
-        // Animate the Pie Chart
         pieChart.animateY(1000);
-
-        // Refresh the chart
         pieChart.invalidate();
     }
 

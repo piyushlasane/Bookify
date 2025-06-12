@@ -46,4 +46,5 @@
     <string name="description">Description</string>
     <string name="no_title">No Title</string>
     <string name="no_recently_viewed_books_yet">No recently viewed books yet.</string>
+    <string name="start_reading_to_see_your_book_stats_here">Start reading to\nsee your book stats here!</string>
 </resources>

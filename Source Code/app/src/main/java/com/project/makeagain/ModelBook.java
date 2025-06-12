@@ -48,6 +48,9 @@ public class ModelBook {
         @SerializedName("title")
         private String title;
 
+        @SerializedName("categories")
+        private List<String> categories;
+
         @SerializedName("authors")
         private List<String> authors;
 
@@ -66,6 +69,10 @@ public class ModelBook {
 
         public List<String> getAuthors() {
             return Optional.ofNullable(authors).orElse(Collections.emptyList());
+        }
+
+        public List<String> getCategories() {
+            return categories;
         }
 
         public ImageLinks getImageLinks() {
